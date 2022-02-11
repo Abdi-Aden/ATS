@@ -1,0 +1,11 @@
+sqlparse==0.4.2
+starlette==0.16.0
+toml==0.10.2
+typing-extensions==3.10.0.2
+tzdata==2021.5
+ujson==4.2.0
+urllib3==1.26.7
+uvicorn==0.15.0
+watchgod==0.7
+websockets==10.1
+wrapt==1.13.3
