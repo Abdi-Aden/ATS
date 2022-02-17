@@ -78,6 +78,7 @@ class Trip(_database.Base):
     signature = _sql.Column(_sql.String(64), index=True)
     is_complete = _sql.Column(_sql.Boolean, default=False, index=True)
 
+
 # registration table with is, name, email, phone, address, employee_id from employees table
 class Registration(_database.Base):
     __tablename__ = "registration"
@@ -89,6 +90,7 @@ class Registration(_database.Base):
     employee_id = _sql.Column(_sql.Integer, _sql.ForeignKey("employees.id"), nullable=False)
     employee = _orm.relationship("Employee", back_populates="registration")
 
+
 #login table with email from employees table and password
 class Login(_database.Base):
     __tablename__ = "logins"
@@ -96,6 +98,4 @@ class Login(_database.Base):
     email = _sql.Column(_sql.String(64), unique=True, index=True,foreign_key="employees.email")
     password = _sql.Column(_sql.String(64), nullable=False)
     employee = _orm.relationship("Employee", back_populates="login")
-    
-
 
