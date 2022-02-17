@@ -16,35 +16,7 @@ class Company(_database.Base):
     logo = _sql.Column(_sql.String(50), nullable=False)
     slogan = _sql.Column(_sql.String(50), nullable=False)
 
-
-# table for executives
-class Executive(_database.Base):
-    __tablename__ = 'executives'
-    id = _sql.Column(_sql.Integer, primary_key=True)
-    name = _sql.Column(_sql.String(50), nullable=False)
-    phone = _sql.Column(_sql.String(50), nullable=False)
-    address = _sql.Column(_sql.String(50), nullable=False)
-    email = _sql.Column(_sql.String(50), nullable=False)
-    company_id = _sql.Column(_sql.Integer, _sql.ForeignKey('company.id'))
-    company = _orm.relationship('Company', backref='executives')
-
-
-    # branches table with manager from employees table
-class Branch(_database.Base):
-    __tablename__ = 'branches'
-    id = _sql.Column(_sql.Integer, primary_key=True)
-    name = _sql.Column(_sql.String(50), nullable=False)
-    phone = _sql.Column(_sql.String(50), nullable=False)
-    address = _sql.Column(_sql.String(50), nullable=False)
-    email = _sql.Column(_sql.String(50), nullable=False)
-    manager_id = _sql.Column(_sql.Integer, _sql.ForeignKey('employees.id'))
-    manager = _orm.relationship('Employee', backref='branches')
-    manager_name = _sql.Column(_sql.String(50), nullable=False)
-
-
-
-
-# departments t table with manager from employees table and branches table
+# departments table with manager from employees table 
 class Department(_database.Base):
     __tablename__ = 'departments'
     id = _sql.Column(_sql.Integer, primary_key=True)
@@ -55,9 +27,6 @@ class Department(_database.Base):
     manager_id = _sql.Column(_sql.Integer, _sql.ForeignKey('employees.id'))
     manager = _orm.relationship('Employee', backref='departments')
     manager_name = _sql.Column(_sql.String(50), nullable=False)
-    branch_id = _sql.Column(_sql.Integer, _sql.ForeignKey('branches.id'))
-    branch = _orm.relationship('Branch', backref='departments')
-    branch_name = _sql.Column(_sql.String(50), nullable=False)
     
 
 # employees table 
