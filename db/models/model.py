@@ -43,8 +43,7 @@ class Employee(_database.Base):
     salary = _sql.Column(_sql.Float, nullable=False)
     is_supervisor = _sql.Column(_sql.Boolean, default=False, index=True)
     supervisor_id = _sql.Column(_sql.Integer, _sql.ForeignKey("employees.id"), index=True)
-    supervisor = _orm.relationship("Employee", back_populates="subordinates")
-    subordinates = _orm.relationship("Employee", back_populates="supervisor")
+    supervisor = _orm.relationship("Employee", back_populates="employees")
 
 
 # vehicles with driver from employees table
